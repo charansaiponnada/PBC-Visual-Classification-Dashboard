@@ -248,7 +248,7 @@ with st.sidebar:
                 st.json(rule.params)
                 delete_col1, delete_col2 = st.columns([4, 1])
                 with delete_col2:
-                    if st.button("🗑️"):
+                    if st.button(f"🗑️ Rule {idx+1}", key=f"delete_rule_{idx}"):
                         del st.session_state.rules[idx]
                         st.success(f"Deleted Rule {idx+1}")
                         st.rerun()
