@@ -237,14 +237,30 @@ with st.sidebar:
             st.rerun()
     
     # Rules management
+    # Rules management
     st.subheader("📋 Active Rules")
+
     if st.session_state.rules:
         st.write(f"Total Rules: {len(st.session_state.rules)}")
-        if st.button("🗑️ Clear All Rules"):
+
+        for idx, rule in enumerate(st.session_state.rules):
+            with st.expander(f"Rule {idx+1}: {rule.rule_type.upper()} → {rule.predicted_class}"):
+                st.json(rule.params)
+                delete_col1, delete_col2 = st.columns([4, 1])
+                with delete_col2:
+                    if st.button("🗑️"):
+                        del st.session_state.rules[idx]
+                        st.success(f"Deleted Rule {idx+1}")
+                        st.rerun()
+
+        st.markdown("---")
+        if st.button("🧹 Clear All Rules"):
             st.session_state.rules = []
             st.rerun()
+
     else:
         st.info("No rules created yet")
+
 
 # Main content
 tab1, tab2, tab3, tab4 = st.tabs(["📊 Visualization", "🎯 Circle Segments", "📈 Evaluation", "🌳 Decision Tree"])
