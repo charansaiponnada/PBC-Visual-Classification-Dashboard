@@ -1939,6 +1939,7 @@ Reflect: Did visual approach reveal insights?
 - Authors: Mihael Ankerst, Christian Elsen, Martin Ester, Hans-Peter Kriegel
 - Year: 1999
 - Conference: KDD '99
+- [that paper link](./paper.pdf)
 
 **Key Contributions**:
 1. Circle Segments visualization technique
